@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF8" />
+<link rel="stylesheet" href="Index.css" />
+<link href=".htaccess" />
+<title>
+   Championnat 
+</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="topnav">
+  <a class="active" href="Index.html">Home</a>
+  <a href="#news">News</a>
+  <a href="#contact">Contact</a>
+   
+  <div class="topnav-right">
+    <a href="Inscription.html">Inscription</a>
+    <div class="topnav-right"><button onclick="document.getElementById('login').style.display='block'">Login</button></div>
+  </div>
+</div>
+	
+
+<div class="jumbotron" style="background:#80BFFF">
+
+            <form class="form-horizontal" method="post" name="participantsForm" id="participantsForm" action="elemekura" onsubmit="return areInputsCorrect();">
+
+                <div class="form-group">
+                    <label class="control-label col-xs-3">Nom de Tournoi</label>
+                    <div class="col-lg-4 col-xs-4">
+                        <input type="text" class="form-control" id="tourName" name="tourName" value="" maxlength="50">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-3">Combien d'equipe</label>
+                    <div class="col-lg-1 col-xs-2">
+                        <input type="number" min="4" max="64" class="form-control" id="participantNum" name="participantNum" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-offset-3 col-xs-10">
+                        <input type="button" class="btn btn-primary" onclick="refreshRows(this.form);" value="Katılımcı Ekle">
+                    </div>
+                </div>
+
+                <div class="form-group" id="gücPuanıExp" style="padding-left: 10%;">
+                    <div class="col-xs-offset-2 col-xs-10">
+            
+                    </div>
+
+                </div>
+
+                <div class="form-group" id="partRows" style="padding-left: 18%;">
+                                    <div id="divNum1"><p> </p><div class="col-lg-4 col-xs-6"> <label2 class="control-label visible-sm-* col-sm-1 "></label2>  <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span><input type="text" class="form-control" name="partName1" id="partName1" placeholder="Katılımcı İsmi"> </div></div>               <label class="control-label col-xs-1">Güç Puanı</label> <div class="col-lg-1 col-xs-2"> <input type="number" min="1" max="10" class="form-control" name="partPow1" id="partPow1"> </div>  <input type="button" value="Çıkar" class="btn btn-danger" onclick="removeSpecificRow(1);"><p></p> </div><div id="divNum2"><p> </p><div class="col-lg-4 col-xs-6"> <label2 class="control-label visible-sm-* col-sm-1 "></label2>  <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span><input type="text" class="form-control" name="partName2" id="partName2" placeholder="Katılımcı İsmi"> </div></div>               <label class="control-label col-xs-1">Güç Puanı</label> <div class="col-lg-1 col-xs-2"> <input type="number" min="1" max="10" class="form-control" name="partPow2" id="partPow2"> </div>  <input type="button" value="Çıkar" class="btn btn-danger" onclick="removeSpecificRow(2);"><p></p> </div><div id="divNum3"><p> </p><div class="col-lg-4 col-xs-6"> <label2 class="control-label visible-sm-* col-sm-1 "></label2>  <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span><input type="text" class="form-control" name="partName3" id="partName3" placeholder="Katılımcı İsmi"> </div></div>               <label class="control-label col-xs-1">Güç Puanı</label> <div class="col-lg-1 col-xs-2"> <input type="number" min="1" max="10" class="form-control" name="partPow3" id="partPow3"> </div>  <input type="button" value="Çıkar" class="btn btn-danger" onclick="removeSpecificRow(3);"><p></p> </div><div id="divNum4"><p> </p><div class="col-lg-4 col-xs-6"> <label2 class="control-label visible-sm-* col-sm-1 "></label2>  <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span><input type="text" class="form-control" name="partName4" id="partName4" placeholder="Katılımcı İsmi"> </div></div>               <label class="control-label col-xs-1">Güç Puanı</label> <div class="col-lg-1 col-xs-2"> <input type="number" min="1" max="10" class="form-control" name="partPow4" id="partPow4"> </div>  <input type="button" value="Çıkar" class="btn btn-danger" onclick="removeSpecificRow(4);"><p></p> </div><div id="divNum5"><p> </p><div class="col-lg-4 col-xs-6"> <label2 class="control-label visible-sm-* col-sm-1 "></label2>  <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span><input type="text" class="form-control" name="partName5" id="partName5" placeholder="Katılımcı İsmi"> </div></div>               <label class="control-label col-xs-1">Güç Puanı</label> <div class="col-lg-1 col-xs-2"> <input type="number" min="1" max="10" class="form-control" name="partPow5" id="partPow5"> </div>  <input type="button" value="Çıkar" class="btn btn-danger" onclick="removeSpecificRow(5);"><p></p> </div></div>
+
+                <div class="form-group" id="kuraCekBtn" style="">
+                    <div class="col-xs-offset-3 col-xs-10">
+                        <input type="submit" class="btn btn-primary" value="Hızlı Kura Çek" data-toggle="tooltip" data-placement="top" title="" data-original-title="Kura çekimi hemen yapılır, fikstür direkt gözükür.">
+                        <input type="button" class="btn btn-primary" value="Canlı Kura Çek" style="margin-left: 15px;" id="liveDrawingBtn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Kura çekimi teker teker yapılır, fikstür zamanla tamamlanır.">
+                    </div>
+                </div>
+                <input name="partRowsId" type="hidden" value="" id="partRowsId">
+                <input name="drawingOption" type="hidden" value="quick" id="drawingOption">
+            </form>
+        </div>
+
+
+
+<!-- INSCRIPTION FORMULAIRE -->
+<div align=center class="Inscription">
+<form method="POST" action="Inscrit.php">
+
+<legend>Creation du Tournoi </legend>
+
+<table>
+    <tr><td>Prenom : *</td><td><input type="text"required name="Prenom"/></td></tr>
+    <tr><td>Nom : *</td><td><input type="text" name="Nom" required/></td></tr>
+     <tr><td>Votre E-mail : *</td><td><input type="email" name="email" required /></td></tr>
+      <tr><td>Votre Password : *</td><td><input type="password" name="password" required /></td></tr>
+      <tr><td><label for="start">Date de debut :*</label>
+
+      <input type="date" id="start" name="start-time"
+       value="2020-01-01"
+       min="2020-01-01" required></td></tr>
+       <tr><td>
+         <label for="Membre">Choisir role du joueur :*</label>
+    <select id="Role" name="Role">
+    <option value="0">Capitaine</option>
+    <option value="2">Joueur</option> 
+
+</div> 
+</td></tr>
+</select>
+</table>
+<br/>
+
+<form>
+    Combien d'equipe vous voulez*<br>
+    <input type="number" min="2" max="6" id="table-row-num" value="" required="required">
+    <button id="submitButton">Submit</button>
+</form>
+    
+    
+    <div id="table-gen">
+        <p>Nombre d'equipe </p>
+        <table id="resultTable" cellpadding="1" cellspacing="1" border="1">
+          <tr>
+            <td>1</td>
+            <td><input type="name" placeholder="Nom"></td>
+            <td><input type="name" placeholder="Prenom"></td>
+            <td><input type="name" placeholder="Mail"></td>
+            <td><input type="name"></td>
+          </tr>
+           <tr><td><label for="start">Date de debut :*</label>
+
+      <input type="date" id="start" name="start-time"
+       value="2020-01-01"
+       min="2020-01-01" required></td></tr>
+        
+    </div>
+    
+<script>
+     $("#submitButton").click(function() {
+    var table = $("#resultTable");
+    var rowNum = parseInt($("#table-row-num").val(), 10);
+    var resultHtml = '';
+    
+  for(var i = 0 ; i < rowNum ; i++) {
+    resultHtml += ["<tr>", 
+   "<td>", 
+    (i+1),
+   "</td>",
+   '<td><input type="name" placeholder="text goes here..."></td>',
+   '<td><input type="name" placeholder="text goes here..."></td>',
+   '</tr>'].join("\n");
+  }  
+  
+  table.html(resultHtml);
+    return false; 
+});
+</script>
